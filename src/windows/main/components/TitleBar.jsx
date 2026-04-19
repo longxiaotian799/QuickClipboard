@@ -134,25 +134,25 @@ const TitleBar = forwardRef(({
     }
   };
 
-  const startScreenshotFromMenu = async (mode) => {
-    try {
-      await hideMainWindow();
-      const waitTime = settingsStore.clipboardAnimationEnabled !== false ? 170 : 50;
-      await new Promise(resolve => setTimeout(resolve, waitTime));
-
-      if (mode === 'normal') {
-        await startScreenshot();
-      } else if (mode === 'quick-save') {
-        await startScreenshotQuickSave();
-      } else if (mode === 'quick-pin') {
-        await startScreenshotQuickPin();
-      } else if (mode === 'quick-ocr') {
-        await startScreenshotQuickOcr();
-      }
-    } catch (error) {
-      console.error('标题栏启动截屏失败:', error);
-    }
-  };
+  // const startScreenshotFromMenu = async (mode) => {
+  //   try {
+  //     await hideMainWindow();
+  //     const waitTime = settingsStore.clipboardAnimationEnabled !== false ? 170 : 50;
+  //     await new Promise(resolve => setTimeout(resolve, waitTime));
+  //
+  //     if (mode === 'normal') {
+  //       await startScreenshot();
+  //     } else if (mode === 'quick-save') {
+  //       await startScreenshotQuickSave();
+  //     } else if (mode === 'quick-pin') {
+  //       await startScreenshotQuickPin();
+  //     } else if (mode === 'quick-ocr') {
+  //       await startScreenshotQuickOcr();
+  //     }
+  //   } catch (error) {
+  //     console.error('标题栏启动截屏失败:', error);
+  //   }
+  // };
 
   const handleMoreMenu = async (event) => {
     event.preventDefault();
