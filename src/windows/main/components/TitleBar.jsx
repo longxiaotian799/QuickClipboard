@@ -189,16 +189,16 @@ const TitleBar = forwardRef(({
       displayPriorityOptions.map((option) => [`menu-display-priority-${option.id}`, option.value])
     );
 
-    const screenshotItem = createMenuItem('menu-screenshot-group', t('tools.moreMenu.screenshot'), {
-      icon: 'ti ti-screenshot',
-      disabled: settingsSnap.screenshotEnabled === false
-    });
-    screenshotItem.children = [
-      createMenuItem('menu-screenshot-normal', t('tools.screenshot'), { icon: 'ti ti-screenshot' }),
-      createMenuItem('menu-screenshot-quick-save', t('settings.shortcuts.screenshotQuickSave'), { icon: 'ti ti-copy' }),
-      createMenuItem('menu-screenshot-quick-pin', t('settings.shortcuts.screenshotQuickPin'), { icon: 'ti ti-pinned' }),
-      createMenuItem('menu-screenshot-quick-ocr', t('settings.shortcuts.screenshotQuickOcr'), { icon: 'ti ti-text-scan-2' })
-    ];
+    // const screenshotItem = createMenuItem('menu-screenshot-group', t('tools.moreMenu.screenshot'), {
+    //   icon: 'ti ti-screenshot',
+    //   disabled: settingsSnap.screenshotEnabled === false
+    // });
+    // screenshotItem.children = [
+    //   createMenuItem('menu-screenshot-normal', t('tools.screenshot'), { icon: 'ti ti-screenshot' }),
+    //   createMenuItem('menu-screenshot-quick-save', t('settings.shortcuts.screenshotQuickSave'), { icon: 'ti ti-copy' }),
+    //   createMenuItem('menu-screenshot-quick-pin', t('settings.shortcuts.screenshotQuickPin'), { icon: 'ti ti-pinned' }),
+    //   createMenuItem('menu-screenshot-quick-ocr', t('settings.shortcuts.screenshotQuickOcr'), { icon: 'ti ti-text-scan-2' })
+    // ];
 
     const previewItem = createMenuItem('menu-preview-group', t('tools.moreMenu.contentPreview'), { icon: 'ti ti-eye' });
     previewItem.children = [
@@ -220,7 +220,6 @@ const TitleBar = forwardRef(({
     ];
 
     const menuItems = [
-      screenshotItem,
       previewItem,
       displayPriorityItem,
       pasteItem,
@@ -248,18 +247,18 @@ const TitleBar = forwardRef(({
     }
 
     switch (result) {
-      case 'menu-screenshot-normal':
-        await startScreenshotFromMenu('normal');
-        break;
-      case 'menu-screenshot-quick-save':
-        await startScreenshotFromMenu('quick-save');
-        break;
-      case 'menu-screenshot-quick-pin':
-        await startScreenshotFromMenu('quick-pin');
-        break;
-      case 'menu-screenshot-quick-ocr':
-        await startScreenshotFromMenu('quick-ocr');
-        break;
+      // case 'menu-screenshot-normal':
+      //   await startScreenshotFromMenu('normal');
+      //   break;
+      // case 'menu-screenshot-quick-save':
+      //   await startScreenshotFromMenu('quick-save');
+      //   break;
+      // case 'menu-screenshot-quick-pin':
+      //   await startScreenshotFromMenu('quick-pin');
+      //   break;
+      // case 'menu-screenshot-quick-ocr':
+      //   await startScreenshotFromMenu('quick-ocr');
+      //   break;
       case 'menu-preview-text':
         try {
           await settingsStore.saveSetting('textPreview', settingsSnap.textPreview === false);
