@@ -107,13 +107,13 @@ function TabNavigation({
     label: t('favorites.title') || '收藏',
     icon: 'ti ti-star'
   }, {
-    id: 'emoji',
-    label: t('emoji.title') || '符号',
-    icon: 'ti ti-mood-smile'
+    // id: 'emoji',  // 已隐藏
+    // label: t('emoji.title') || '符号',
+    // icon: 'ti ti-mood-smile'
   }, {
-    id: 'chat',
-    label: t('chat.title'),
-    icon: 'ti ti-message-circle'
+    // id: 'chat',  // 已隐藏
+    // label: t('chat.title'),
+    // icon: 'ti ti-message-circle'
   }];
 
   const emojiModes = [{

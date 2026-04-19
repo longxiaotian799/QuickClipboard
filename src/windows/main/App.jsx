@@ -380,8 +380,8 @@ function App() {
   const ContentComponent = <div ref={contentDragRef} className="main-content-area flex-1 min-h-0 overflow-hidden relative pb-[8px] bg-qc-surface transition-colors duration-500">
       {activeTab === 'clipboard' && <ClipboardTab ref={clipboardTabRef} contentFilter={contentFilter} searchQuery={searchQuery} />}
       {activeTab === 'favorites' && <FavoritesTab ref={favoritesTabRef} contentFilter={contentFilter} searchQuery={searchQuery} />}
-      {activeTab === 'chat' && <ChatTab />}
-      {activeTab === 'emoji' && <Suspense fallback={null}><EmojiTab emojiMode={emojiMode} onEmojiModeChange={setEmojiMode} /></Suspense>}
+      {/* {activeTab === 'chat' && <ChatTab />} */}  {/* 已隐藏 */}
+      {/* {activeTab === 'emoji' && <Suspense fallback={null}><EmojiTab emojiMode={emojiMode} onEmojiModeChange={setEmojiMode} /></Suspense>} */}  {/* 已隐藏 */}
     </div>;
   const ActionBarComponent = <MultiSelectActionBar activeTab={activeTab} />;
   const renderWorkspace = () => {
