@@ -160,18 +160,22 @@ pub async fn show_tray_menu(app: AppHandle) -> Result<(), String> {
     
     let hotkeys_label = if settings.hotkeys_enabled { "禁用快捷键" } else { "启用快捷键" };
     let monitor_label = if settings.clipboard_monitor { "禁用剪贴板监听" } else { "启用剪贴板监听" };
-    
-    let items = vec![
+
+    let mut items = vec![
         menu_item_with_state("toggle", "显示/隐藏", Some("ti ti-app-window"), is_force_update),
         separator_item(),
         menu_item_with_state("settings", "设置", Some("ti ti-settings"), is_force_update),
-        menu_item_with_state(
+    ];
+
+    // 当截图功能启用时，才显示截屏和贴图菜单项
+    if settings.screenshot_enabled {
+        items.push(menu_item_with_state(
             "screenshot",
             "截屏",
             Some("ti ti-screenshot"),
-            is_force_update || !settings.screenshot_enabled,
-        ),
-        CtxMenuItem {
+            is_force_update,
+        ));
+        items.push(CtxMenuItem {
             id: "pin-images".to_string(),
             label: "贴图".to_string(),
             icon: Some("ti ti-pinned".to_string()),
@@ -183,7 +187,10 @@ pub async fn show_tray_menu(app: AppHandle) -> Result<(), String> {
             buttons: None,
             children: Some(build_pin_images_children()),
             preview_image: None,
-        },
+        });
+    }
+
+    items.extend(vec![
         separator_item(),
         menu_item_with_state("toggle-hotkeys", hotkeys_label, Some("ti ti-keyboard"), is_force_update),
         menu_item_with_state("toggle-clipboard-monitor", monitor_label, Some("ti ti-clipboard"), is_force_update),
@@ -231,8 +238,8 @@ pub async fn show_tray_menu(app: AppHandle) -> Result<(), String> {
         separator_item(),
         menu_item("restart", "重启程序", Some("ti ti-refresh")),
         menu_item("quit", "退出", Some("ti ti-power")),
-    ];
-    
+    ]);
+
     let (cursor_x, cursor_y) = crate::mouse::get_cursor_position();
     let theme = if settings.theme.is_empty() { "auto".to_string() } else { settings.theme };
     
